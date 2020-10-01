@@ -7,13 +7,16 @@
 
 using namespace std;
 
+//class is used to manage the bookshop library
 class bookshop
 {
+	//fields are to be made private so as to ensure data hiding
 	private :
 		int id;
 		char title[20];
 		float price;
 	
+	//constructor , accessor and mutator methods are to be made public because they'll be accessed by the object
 	public :
 		bookshop()
 		{
@@ -21,6 +24,8 @@ class bookshop
 			strcpy(title, "no title");
 			price = 0;
 		}
+	
+	//declaration of methods
 		void get_data();
 		void get_data1();
 		void store_data();
@@ -41,13 +46,16 @@ class bookshop
 		}
 };
 
+//fstream object is used to store the data in files for future reference
 fstream fp;
 bookshop b;
 
+//implementation of bookshop methods
 void bookshop::get_data()
 {
 	char ch;
 	
+	//while the user prompts to store the books keep getting the data
 	do
 	{
 		system("CLS");
@@ -79,6 +87,7 @@ void bookshop::get_data1()
 
 void bookshop::store_data()
 {
+	//stores the data in a binary file bookship2.dat
 	fp.open("bookshop2.dat", ios::app | ios::binary);
 	fp.write((char*)this, sizeof(*this));
 	fp.close();
@@ -89,6 +98,8 @@ void bookshop::show_data()
 	int i, flag;
 	char ch;
 	
+	
+	//while user wants to see the information the portal will keep asking for information
 	do
 	{
 		system("CLS");
@@ -166,6 +177,7 @@ void bookshop::delete_data()
 	int i, flag;
 	char ch;
 	
+	//while the user wants to delete the data allow him to delete the data
 	do
 	{
 		system("CLS");
@@ -261,6 +273,7 @@ void bookshop::update()
 	int t;
 	fstream f2;
 	
+	//loop to ensure that user can update all the necessary files in one go
 	do
 	{
 		system("CLS");
